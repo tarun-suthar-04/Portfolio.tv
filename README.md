@@ -35,6 +35,7 @@ This portfolio showcases the creative practice of **Tarun Suthar**, an independe
 - **Zero-Dependency Core:** Clean vanilla CSS design system integrated with Tailwind CSS v4, achieving zero layout shift (CLS 0) and rapid loading.
 
 ---
+[![Architecture diagram of tarun-suthar-04/portfolio.tv](https://gitdiagram.com/tarun-suthar-04/portfolio.tv/diagram.png)](https://gitdiagram.com/tarun-suthar-04/portfolio.tv?utm_source=readme&utm_medium=picture)
 
 ## Project Structure
 
