@@ -1,120 +1,154 @@
-# Tarun Suthar — Creative Portfolio
+# Tarun Suthar — Creative AI & Visual Works Portfolio
 
-A dark, media-first personal portfolio for photography, filmmaking, and image making. Features a fixed vertical desktop rail, two opposing infinitely-looping media lanes, responsive mobile navigation, and project detail routes. Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4**.
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.2-black?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-black?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.2-black?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-black?style=flat-square)](LICENSE)
+
+A high-performance, dark-canvas creative portfolio built for **Tarun Suthar** (`TARUN / VISUAL WORKS`), focusing on AI-assisted visual creation, moving images, editorial design, and digital content production.
+
+Designed with a restrained Swiss editorial aesthetic, featuring a fixed vertical desktop rail, dual opposing interactive looping media lanes, seamless category filtering, and an editorial About page.
 
 ---
 
-## Quick Start
+## What This Project Is About
 
-Requires **Node.js 20.9+**.
+This portfolio showcases the creative practice of **Tarun Suthar**, an independent **Creative AI Artist & Visual Content Creator**. The site is structured to exhibit work across:
 
-```bash
-npm install
-npm run dev
-```
+- **AI Video & Moving Images:** Short-form video experiments, cinematic rhythm, and motion sequences.
+- **Generative Visuals & Portraits:** AI-assisted imagery, aesthetic portraiture, digital character studies, and wallpapers.
+- **Editorial & Poster Design:** High-contrast graphic typography, visual framing, and editorial concepts.
+- **Advertising & UGC Creatives:** Fashion-forward commercials, garment studies, silhouettes, and commercial content concepts.
+- **Visual Storytelling & Editing:** Image compositing, layering, color grading, and creative tool workflows (Flow AI, CapCut, Canva).
 
-Open [http://localhost:3000](http://localhost:3000).
+---
+
+## Design & Architecture Highlights
+
+- **Dark Editorial Identity:** Engineered on a rich `#090909` canvas with off-white typography (`#f1f1ee`), restrained borders (`rgba(241, 241, 238, 0.2)`), and burnt-terracotta accent tones (`#b64934`).
+- **Fixed Vertical Navigation Rail:** Desktop edge rail with vertical writing mode (`writing-mode: vertical-rl`) providing persistent navigation without obstructing media immersion.
+- **Opposing Looping Media Wall:** Two independent, infinitely looping media tracks with grab-to-scroll interaction, touch support, and viewport-aware video playback.
+- **Full Viewport Editorial About Page:** Mathematically balanced two-column grid establishing hierarchy between identity, professional statement, creative disciplines, direct email inquiries, and live platform links.
+- **Dynamic Project Routes:** Next.js static site generation (`/projects/[slug]`) for individual project galleries, metadata inspection, and media viewers.
+- **Mobile Responsive:** Smooth breakpoint collapse to horizontal top header, overlay navigation drawer, and single-column swipeable media layouts.
+- **Zero-Dependency Core:** Clean vanilla CSS design system integrated with Tailwind CSS v4, achieving zero layout shift (CLS 0) and rapid loading.
 
 ---
 
 ## Project Structure
 
-```
-src/
-  app/              # Next.js App Router pages
-    about/          # About page with bio and contact links
-    commercials/    # Commercials archive
-    personal/       # Personal archive
-    personal-work/  # Redirect to /personal
-    stories/        # Stories archive
-    projects/[slug] # Dynamic project detail page
-    globals.css     # All authored styles (dark palette, rail, wall, responsive)
-    layout.tsx      # Root layout with SEO metadata
-  components/
-    media-wall.tsx  # Two-lane media archive wall (home + category pages)
-    media-view.tsx  # Still/video renderer for project detail pages
-    site-header.tsx # Fixed rail (desktop) + collapsible menu (mobile)
-    site-footer.tsx # Minimal footer with contact link
-    archive.tsx     # Thin wrapper: category filter → MediaWall
-  data/
-    site.ts         # Identity: name, role, bio, email, social links
-    projects.ts     # All projects: title, category, media, order, cover, metadata
-public/
-  media/            # Optimized media files served at /media/
-work/               # Source originals (not served)
+```text
+├── public/
+│   └── media/                # Served portfolio media (images, posters, MP4 clips)
+├── src/
+│   ├── app/
+│   │   ├── about/            # Redesigned editorial About page
+│   │   ├── commercials/      # Commercials & advertising category archive
+│   │   ├── personal/         # Personal explorations archive
+│   │   ├── personal-work/    # Alias redirect to /personal
+│   │   ├── stories/          # Narrative & video stories archive
+│   │   ├── projects/[slug]/  # Dynamic project case study routes
+│   │   ├── globals.css       # Core design tokens, typography, rail & media-wall CSS
+│   │   ├── icon.tsx          # Dynamic SVG/PNG favicon generator
+│   │   ├── layout.tsx        # Root HTML shell, OpenGraph, and viewport config
+│   │   ├── not-found.tsx     # Custom editorial 404 page
+│   │   └── robots.ts         # Automated search engine crawler directives
+│   ├── components/
+│   │   ├── archive.tsx       # Category archive wrapper with media filtering
+│   │   ├── media-view.tsx    # Responsive picture & HTML5 video renderer
+│   │   ├── media-wall.tsx    # Dual-lane infinite looping media tracks
+│   │   └── site-header.tsx   # Responsive navigation rail & mobile menu
+│   └── data/
+│       ├── projects.ts       # Central projects catalog, aspect ratios & media paths
+│       └── site.ts           # Global identity: bio, email, status & platform links
+├── ARCHITECTURE.md           # Deep architectural specification
+├── CODING_RULES.md           # Engineering guidelines & accessibility standards
+├── INFO.md                   # Single source of truth for portfolio facts
+└── tsconfig.json             # Strict TypeScript configuration
 ```
 
 ---
 
-## Add or Update Content
+## Quick Start
 
-### Personal information
-Edit [`src/data/site.ts`](src/data/site.ts):
-- `name`, `role`, `bio` — shown on the About page
-- `email`, `instagram`, `vimeo` — shown as links if non-empty
-- `tagline` — used in HTML `<meta description>`
+### Prerequisites
 
-### Add a project
-1. Place your media in `public/media/` (JPG, PNG, WebP, MP4). Keep originals in `work/`.
-2. Add the file's pixel dimensions to the `dimensions` map in [`src/data/projects.ts`](src/data/projects.ts).
-3. Add a `Project` entry:
+- **Node.js 20.9+** or newer
+- **npm** (or pnpm / yarn)
 
-```ts
-{
-  id: "04",
-  slug: "your-project",           // URL-safe, unique
-  title: "Your Project Title",
-  category: "Personal",           // "Stories" | "Commercials" | "Personal"
-  order: 4,                       // display order in archive
-  featured: true,                 // show on the home media wall
-  year: "2026",
-  description: "Short description shown on the project page.",
-  cover: image("cover.jpg", "Alt text for cover"),
-  media: [
-    image("cover.jpg", "Alt text"),
-    video("film.mp4", "Short description", "poster.jpg"),
-  ],
-}
-```
-
-For **remote videos**, use the full URL directly in the `src` field.
-
-### Remove placeholder projects
-The three starter groups (`garment-studies`, `moving-image`, `image-making`) use working titles. Replace them with your actual project names, descriptions, and credits before launching.
-
----
-
-## Checks
+### Installation
 
 ```bash
-npm run typecheck   # TypeScript — must pass before committing
-npm run lint        # ESLint
-npm run build       # Full production build
+# Clone the repository
+git clone https://github.com/tarun-suthar-04/Portfolio.tv.git
+
+# Enter project directory
+cd Portfolio.tv
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
----
-
-## Deploy
-
-**Vercel (recommended):** Import the repository; Vercel auto-detects Next.js. Set build command `npm run build` and output directory `.next`.
-
-**Any Node host:** `npm run build` then `npm run start`.
-
-> **Important:** Optimize large media files before publishing. The site serves everything from `public/media/` directly. Use `cwebp`/`ffmpeg` to convert images to WebP and compress MP4s before adding them to the folder.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Performance Notes
+## Scripts & Verification
 
-- Above-fold media wall tiles use `fetchPriority="high"` and `loading="eager"` for fast LCP.
-- Video tiles use `preload="none"` and only play when in the viewport.
-- Media assets get a one-year `Cache-Control: immutable` header.
-- `content-visibility: auto` is applied to off-screen gallery items.
-- `contain: paint` isolates media tile repaints.
-- Next.js image optimization outputs AVIF/WebP variants when `next/image` is used.
+| Command | Description |
+|---|---|
+| `npm run dev` | Starts local Next.js development server with Turbopack |
+| `npm run typecheck` | Strict TypeScript validation via `tsc --noEmit` |
+| `npm run lint` | ESLint static code analysis |
+| `npm run build` | Builds optimized production bundle (all 13 static pages) |
+| `npm run start` | Runs the production build locally |
 
 ---
 
-## Reference
+## Content Customization
 
-[`REFERENCE_ANALYSIS.md`](REFERENCE_ANALYSIS.md) documents the design reference (twicetwice.tv), evidence confidence levels, and what was verified versus inferred.
+### 1. Update Identity & Social Links
+Edit [`src/data/site.ts`](src/data/site.ts):
+```ts
+export const site = {
+  name: "Tarun Suthar",
+  brand: "TARUN / VISUAL WORKS",
+  role: "Creative AI Artist & Visual Content Creator",
+  bio: "...",
+  email: "cdstarun2004@gmail.com",
+  github: "https://github.com/tarun-suthar-04",
+  linkedin: "https://www.linkedin.com/in/tarun-suthar-307838266/",
+  fiverr: "https://www.fiverr.com/s/AGGqXlY",
+  availability: "Open to creative opportunities",
+};
+```
+
+### 2. Adding New Projects
+Edit [`src/data/projects.ts`](src/data/projects.ts):
+1. Place optimized media assets inside `public/media/`.
+2. Register file dimensions inside the `dimensions` lookup map.
+3. Add a new `Project` record with category (`"Stories"` | `"Commercials"` | `"Personal"`), cover image, and gallery items.
+
+---
+
+## Deployment
+
+### Vercel (Recommended)
+1. Push your repository to GitHub.
+2. Import the project into [Vercel](https://vercel.com).
+3. Framework preset will automatically detect **Next.js**.
+4. Deploy with one click.
+
+---
+
+## Connect & Inquiries
+
+- **Creator:** Tarun Suthar
+- **Email:** [cdstarun2004@gmail.com](mailto:cdstarun2004@gmail.com)
+- **GitHub:** [@tarun-suthar-04](https://github.com/tarun-suthar-04)
+- **LinkedIn:** [Tarun Suthar](https://www.linkedin.com/in/tarun-suthar-307838266/)
+- **Fiverr:** [Portfolio Services](https://www.fiverr.com/s/AGGqXlY)
