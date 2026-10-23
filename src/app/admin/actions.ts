@@ -160,12 +160,23 @@ export async function attachMedia(input: {
     }
 
     const { projectId, ...mediaFields } = input;
+
+    // Get max existing display_order to append this item at the end (safe integer range)
+    const { data: maxOrderRow } = await db
+      .from("project_media")
+      .select("display_order")
+      .eq("project_id", projectId)
+      .order("display_order", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    const nextOrder = (maxOrderRow?.display_order ?? -1) + 1;
+
     const { data, error } = await db
       .from("project_media")
       .insert({
         project_id: projectId,
         ...mediaFields,
-        display_order: Date.now(),
+        display_order: nextOrder,
       })
       .select("id")
       .single();
