@@ -66,11 +66,36 @@ export async function attachMedia(input:{projectId:string;media_type:"image"|"vi
   if(!poster||!allowed.includes(poster.metadata?.mimetype??"")||!poster.metadata?.mimetype?.startsWith("image/")||Number(poster.metadata?.size)>maxBytes)throw new Error("Video poster metadata is invalid.");
   const {data:posterSigned}=await db.storage.from("portfolio-media").createSignedUrl(input.thumbnail_path,60);
   if(!posterSigned?.signedUrl)throw new Error("Could not validate the poster image.");
-  await verifyFileSignature(posterSigned.signedUrl,poster.metadata.mimetype);
+  await verifyFileSignature(posterSigned.signedUrl, poster.metadata.mimetype);
  }
- const {data,error}=await db.from("project_media").insert({...input,display_order:Date.now()}).select("id").single();
- if(error) throw new Error(error.message); revalidatePath(`/admin/projects/${input.projectId}/edit`); revalidatePath("/admin/media"); return data;
+
+ const { projectId, ...mediaFields } = input;
+ const { data, error } = await db
+   .from("project_media")
+   .insert({
+     project_id: projectId,
+     ...mediaFields,
+     display_order: Date.now(),
+   })
+   .select("id")
+   .single();
+ if (error) throw new Error(error.message);
+
+ // Automatically set as cover if the project does not have one yet
+ const { data: proj } = await db
+   .from("projects")
+   .select("cover_media_id")
+   .eq("id", projectId)
+   .maybeSingle();
+ if (proj && !proj.cover_media_id) {
+   await db.from("projects").update({ cover_media_id: data.id }).eq("id", projectId);
+ }
+
+ revalidatePath(`/admin/projects/${input.projectId}/edit`);
+ revalidatePath("/admin/media");
+ return data;
 }
+
 export async function setCover(form:FormData){const db=await adminClient();const projectId=text(form,"project_id"),mediaId=text(form,"media_id");const {data:media}=await db.from("project_media").select("id").eq("id",mediaId).eq("project_id",projectId).maybeSingle();if(!media)throw new Error("Cover media must belong to this project.");const {error}=await db.from("projects").update({cover_media_id:mediaId}).eq("id",projectId);if(error)throw new Error(error.message);revalidatePath("/");}
 export async function removeMedia(input:{id:string;projectId:string}){const db=await adminClient();const {data,error}=await db.from("project_media").select("storage_path,thumbnail_path").eq("id",input.id).eq("project_id",input.projectId).single();if(error)throw new Error(error.message);const {error:delError}=await db.from("project_media").delete().eq("id",input.id);if(delError)throw new Error(delError.message);const paths=[data.storage_path,data.thumbnail_path].filter((x):x is string=>Boolean(x));if(paths.length){const {error:storageError}=await db.storage.from("portfolio-media").remove(paths);if(storageError){await db.from("storage_cleanup_queue").insert({storage_paths:paths,failure_message:storageError.message});console.error("CMS_MEDIA_CLEANUP_REQUIRED",input.id,paths,storageError.message);}}revalidatePath(`/admin/projects/${input.projectId}/edit`);revalidatePath("/admin/media");revalidatePath("/");}
 export async function reorderProjectMedia(input:{projectId:string;ids:string[]}){const db=await adminClient();if(input.ids.length>200||new Set(input.ids).size!==input.ids.length)throw new Error("Invalid media ordering.");const {data:media}=await db.from("project_media").select("id").eq("project_id",input.projectId);if(!media||media.length!==input.ids.length||media.some(item=>!input.ids.includes(item.id)))throw new Error("Media order does not match this project.");for(let i=0;i<input.ids.length;i++){const {error}=await db.from("project_media").update({display_order:i}).eq("id",input.ids[i]).eq("project_id",input.projectId);if(error)throw new Error(error.message);}revalidatePath(`/admin/projects/${input.projectId}/edit`);revalidatePath("/");}
