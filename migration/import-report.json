@@ -1,0 +1,127 @@
+{
+  "createdAt": "2026-10-22T17:43:07.887Z",
+  "projects": 3,
+  "categories": [
+    "Stories",
+    "Commercials",
+    "Personal"
+  ],
+  "assets": [
+    {
+      "name": "1772129884292.png",
+      "exists": true,
+      "bytes": 724830
+    },
+    {
+      "name": "1772130231801.png",
+      "exists": true,
+      "bytes": 837207
+    },
+    {
+      "name": "1773916150411.png",
+      "exists": true,
+      "bytes": 1047881
+    },
+    {
+      "name": "1775335855551.png",
+      "exists": true,
+      "bytes": 1224235
+    },
+    {
+      "name": "1776536050115.png",
+      "exists": true,
+      "bytes": 1259964
+    },
+    {
+      "name": "1776538127630.png",
+      "exists": true,
+      "bytes": 1258558
+    },
+    {
+      "name": "Product_video_rotating_blouse_202606121755.mp4",
+      "exists": true,
+      "bytes": 7812906
+    },
+    {
+      "name": "Product_video_rotating_blouse_202606121755-poster.jpg",
+      "exists": true,
+      "bytes": 139873
+    },
+    {
+      "name": "Product_video_rotating_blouse_202606121808.mp4",
+      "exists": true,
+      "bytes": 6917529
+    },
+    {
+      "name": "Product_video_rotating_blouse_202606121808-poster.jpg",
+      "exists": true,
+      "bytes": 40370
+    },
+    {
+      "name": "gemini_generated_video_be44981f.mp4",
+      "exists": true,
+      "bytes": 2000178
+    },
+    {
+      "name": "gemini_generated_video_be44981f.jpg",
+      "exists": true,
+      "bytes": 154736
+    },
+    {
+      "name": "gemini_generated_video_469a15c3.mp4",
+      "exists": true,
+      "bytes": 1477667
+    },
+    {
+      "name": "gemini_generated_video_469a15c3-poster.jpg",
+      "exists": true,
+      "bytes": 32593
+    },
+    {
+      "name": "gemini_generated_video_dff85001.mp4",
+      "exists": true,
+      "bytes": 2286672
+    },
+    {
+      "name": "gemini_generated_video_dff85001-poster.jpg",
+      "exists": true,
+      "bytes": 56389
+    },
+    {
+      "name": "file_00000000381c820799ceebeff4158b0b.png",
+      "exists": true,
+      "bytes": 1841196
+    },
+    {
+      "name": "file_00000000284082108c14e84fe0dde428.png",
+      "exists": true,
+      "bytes": 2462793
+    },
+    {
+      "name": "2.png",
+      "exists": true,
+      "bytes": 790514
+    },
+    {
+      "name": "CDS27.jpg",
+      "exists": true,
+      "bytes": 424471
+    },
+    {
+      "name": "Picsart_23-06-10_23-16-11-794.jpg",
+      "exists": true,
+      "bytes": 5022793
+    },
+    {
+      "name": "Picsart_22-08-08_14-03-01-899.jpg",
+      "exists": true,
+      "bytes": 786706
+    },
+    {
+      "name": "my asus.jpg",
+      "exists": true,
+      "bytes": 20176
+    }
+  ],
+  "status": "imported"
+}

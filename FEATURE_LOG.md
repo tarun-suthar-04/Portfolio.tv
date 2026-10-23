@@ -1,5 +1,20 @@
 # Feature Log
 
+## 2026-10-23 — Supabase Admin Panel & Media Upload System Overhaul
+
+### Problems Diagnosed & Solved
+1. **Critical Poster Path Storage Bug**: In `upload-media.tsx`, auto-generated/custom video posters were being saved to `${projectId}/${uuid}.jpg`. However, backend validation in `actions.ts` enforced `^${projectId}/posters/` and only searched `/posters` subdirectory. This resulted in 100% of video uploads with custom/generated posters failing during record insertion. Resolved by standardizing poster paths to `${projectId}/posters/${uuid}.jpg` across client and server.
+2. **CDN / Storage Range Request 206 Bug**: In `actions.ts`, `verifyFileSignature` threw an error if the HTTP response code was not strictly `206 Partial Content`. Supabase CDN or edge proxies can return `200 OK` for bounded byte queries. Updated the check to accept both `200` and `206`.
+3. **Unstyled, Clunky File Input**: Replaced the native unstyled `<input type="file">` controls with a drag-and-drop dropzone featuring animated drag states (`isDragging`), SVG iconography, and dual file picking for images and videos.
+4. **Live Client-Side Media Previews**: Added real-time client-side thumbnail previews for images and animated badges for video files prior to upload.
+5. **Auto Canvas Poster Extraction**: Integrated client-side canvas frame capture (`extractVideoDetails`) to automatically capture high-resolution poster frames at 0.5s when users don't upload a separate poster file.
+6. **Granular Upload Progress & Alert Feedback**: Implemented per-file animated progress tracks with real-time state flags (`Queued`, `Uploading X%`, `Linking asset...`, `Complete`, `Failed`) along with dismissible alert banners.
+7. **Project Category Label Bug**: In `/admin/projects`, projects with valid categories rendered as "Uncategorized" due to Supabase PostgREST returning either an object `{ name: string }` or an array. Normalized category extraction.
+8. **Admin Overview Grid Layout Bug**: Fixed row column mismatch in `/admin` overview table by introducing `.admin-dashboard-row` (4-column layout) replacing the 8-column project row layout.
+9. **Responsive Navigation & Mobile Admin Usability**: Extracted `AdminNav` component with active route indicators (`.is-active`, `aria-current="page"`), and fixed header layout so the admin logout and "View Portfolio" actions remain accessible across all mobile and tablet viewports.
+10. **Next.js 16 Proxy Convention**: Resolved dual middleware/proxy conflict by removing deprecated `middleware.ts` in favor of official `src/proxy.ts`. Verified full `next build` success across all 20+ routes.
+
+
 ## 2026-10-22 — Fix Portfolio Archive Image Caption Alignment
 
 ### Problem Diagnosed

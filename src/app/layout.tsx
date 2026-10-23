@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/data/site";
 import { SiteHeader } from "@/components/site-header";
+import { getCategories } from "@/lib/content";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -35,7 +36,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export const dynamic="force-dynamic";
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const categories=await getCategories();
   return (
     <html lang="en">
       <head>
@@ -43,7 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="/" />
       </head>
       <body>
-        <SiteHeader />
+        <SiteHeader categories={categories} />
         {children}
       </body>
     </html>

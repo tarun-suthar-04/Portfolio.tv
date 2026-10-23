@@ -1,6 +1,4 @@
 import { MediaWall } from "@/components/media-wall";
-import { projects } from "@/data/projects";
-
-export default function HomePage() {
-  return <MediaWall projects={projects.filter((project) => project.featured)} heading="Featured work" />;
-}
+import { getFeaturedProjects } from "@/lib/content";
+export const dynamic="force-dynamic";
+export default async function HomePage() { return <MediaWall projects={await getFeaturedProjects()} heading="Featured work" />; }

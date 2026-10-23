@@ -60,3 +60,7 @@ Font: `Arial, Helvetica, sans-serif` — system fallback stack. Replace `--sans`
 | Cover arrow appear | 0.25 s | `ease` |
 
 All transitions and animations are removed (`transition-duration: .01ms`) when `prefers-reduced-motion: reduce` is set.
+
+## Admin CMS
+
+The CMS reuses `--paper`, `--ink`, `--muted`, `--line`, `--accent` and `--sans`. It uses a compact bordered navigation rail on wide screens, a scrollable compact navigation row on smaller screens, editorial headings, thin table dividers and neutral controls. The existing public header and public layouts are not restyled for CMS use.

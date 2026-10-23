@@ -2,7 +2,7 @@
 
 ## Data
 
-- Keep all project data in `src/data/projects.ts`. Do not duplicate media lists in route components.
+- Use Supabase as the production project source. Keep `src/data/projects.ts` as the local preview and migration source; do not duplicate media lists in route components.
 - Keep name, role, bio, contact links, and tagline in `src/data/site.ts`.
 - Add every media file's pixel dimensions to the `dimensions` map in `projects.ts` before referencing it.
 - Do not add client, credit, or project claims without supplied facts.
@@ -40,9 +40,17 @@
 
 - Run `npm run typecheck` before committing. Zero type errors required.
 - Run `npm run lint` before committing. Zero lint warnings required.
-- Run `npm run build` to validate the full static output before deploying.
+- Run `npm run build` to validate the production Next.js server build before deploying.
 
 ## Miscellaneous
 
 - Do not commit `node_modules/`, `.next/`, or large unoptimized source files.
 - Keep `.gitignore` updated to exclude build artifacts and OS files.
+
+## CMS rules
+
+- Admin pages and mutations must verify the current Supabase user and explicit `admin_users` membership on the server. Never trust client route hiding or user metadata for authorization.
+- All exposed tables and `storage.objects` require RLS. Keep service/secret keys out of client code and public environment variables.
+- Public queries must return published projects only. Keep the original media wall and viewport-aware playback component behavior intact.
+- Validate slugs, project fields, file types, file sizes and Storage metadata. Keep file uploads direct from the browser to Storage; do not buffer large uploads through a server action.
+- Existing portfolio media in `work/` and `public/media/` is source material; do not remove it during CMS import.

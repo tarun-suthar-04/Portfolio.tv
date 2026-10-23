@@ -20,9 +20,9 @@
 - `preload="none"` — no network cost until a video scrolls into view.
 
 ### Project Detail Pages
-- Statically generated from the typed project manifest (`generateStaticParams`).
+- Request-time rendered from published CMS content; local manifest fallback before CMS configuration.
 - Mixed still/video gallery with native video controls (`<MediaView>`).
-- Optional year, description, and credits from manifest.
+- Optional year, description, and credits from the CMS record.
 - Sequential next-project navigation link.
 - Per-project `<title>` and `<meta description>` via `generateMetadata`.
 
@@ -33,7 +33,7 @@
 - All interactive elements have keyboard focus styles.
 
 ### Archive Routes
-- `/stories`, `/commercials`, `/personal-work` each filter the shared manifest.
+- `/stories`, `/commercials`, `/personal` query the CMS category; `/personal-work` redirects to `/personal`.
 - Category pages have their own SEO metadata.
 - "Back to archive" link on each project page returns to the correct category.
 
@@ -66,8 +66,19 @@
 
 - Search or filtering within archives.
 - Custom video player (poster + controls use browser defaults).
-- CMS, admin panel, or server-side data fetching.
 - Pagination (all projects load at once — suitable for a small portfolio).
 - Side-by-side screenshot comparison against the reference site.
 - Vimeo/YouTube embeds (native `<video>` only for local files; remote MP4 URLs work).
 - Sitemap / robots.txt (can be added via `src/app/sitemap.ts`).
+
+## CMS additions (2026-10-22)
+
+- Supabase Auth login and allowlisted admin access; no public registration.
+- CMS overview with live counts and recent projects.
+- Project create, edit, draft/publish, featured toggle, category assignment and delete; unique slug validation is enforced by the database.
+- Database-driven categories and generic `/category/[slug]` archives while retaining `/stories`, `/commercials`, `/personal` and `/personal-work`.
+- Direct browser-to-Storage uploads for JPEG, PNG, WebP, AVIF, MP4 and WebM. Limit is configurable, default 500 MB.
+- Project media browser, video/image preview, cover selection, and file metadata display.
+- Public requests dynamically read published content, so updates do not need redeployment.
+
+CMS limitations requiring follow-up: the library supports filename/type/date filters and pagination but has no unused-asset deletion or general asset editing. Category reassignment is performed through project editing. Uploads are direct with byte progress but not resumable; there is no session-expiry banner. Project-level media can be reordered and removed, and the media library includes retry actions for recorded Storage cleanup failures.
