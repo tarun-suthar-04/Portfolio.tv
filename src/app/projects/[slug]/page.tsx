@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projects, projectBySlug } from "@/data/projects";
+import { getProjects, getProjectBySlug } from "@/lib/content";
 import { MediaView } from "@/components/media-view";
 import { site } from "@/data/site";
 
-export function generateStaticParams() {
-  return projects.map(({ slug }) => ({ slug }));
-}
+export const dynamic="force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -15,7 +13,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = projectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -25,10 +23,10 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = projectBySlug(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
-  const ordered = [...projects].sort((a, b) => a.order - b.order);
+  const ordered = [...await getProjects()].sort((a, b) => a.order - b.order);
   const index = ordered.findIndex((item) => item.slug === project.slug);
   const next = ordered[(index + 1) % ordered.length];
 
@@ -40,7 +38,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <h1>{project.title}</h1>
         </div>
         <Link
-          href={`/${project.category.toLowerCase()}`}
+          href={project.categorySlug === "stories" || project.categorySlug === "commercials" || project.categorySlug === "personal" ? `/${project.categorySlug}` : `/category/${project.categorySlug ?? project.category.toLowerCase()}`}
           className="text-link"
         >
           Back to archive <span aria-hidden="true">↗</span>

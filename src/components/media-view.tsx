@@ -3,7 +3,7 @@ import type { MediaItem } from "@/data/projects";
 export function MediaView({ item, className = "" }: { item: MediaItem; className?: string }) {
   if (item.type === "video") {
     return <video className={`media-video ${className}`} controls playsInline preload="none" poster={item.poster} aria-label={item.alt} width={item.width} height={item.height}>
-      <source src={item.src} type="video/mp4" />
+      <source src={item.src} type={item.src.includes(".webm") ? "video/webm" : "video/mp4"} />
       Your browser does not support this video.
     </video>;
   }

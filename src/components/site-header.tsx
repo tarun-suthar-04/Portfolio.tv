@@ -4,19 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { site } from "@/data/site";
-import { projectBySlug } from "@/data/projects";
+type NavCategory={name:string;slug:string};
 
-const links = [
-  { href: "/personal", label: "Personal" },
-  { href: "/commercials", label: "Commercials" },
-  { href: "/stories", label: "Stories" },
-  { href: "/about", label: "About" },
-];
-
-export function SiteHeader() {
+export function SiteHeader({categories=[]}:{categories?:NavCategory[]}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const currentProject = pathname.startsWith("/projects/") ? projectBySlug(pathname.split("/").pop() ?? "") : undefined;
+  if(pathname.startsWith("/admin")) return null;
 
   return (
     <header className="site-header">
@@ -27,11 +20,12 @@ export function SiteHeader() {
         {open ? "Close" : "Menu"}
       </button>
       <nav id="primary-navigation" className={`primary-nav${open ? " is-open" : ""}`} aria-label="Primary navigation">
-        {links.map((link) => (
-          <Link key={link.href} href={link.href} onClick={() => setOpen(false)} aria-current={pathname === link.href || currentProject?.category === link.label ? "page" : undefined}>
-            {link.label}
+        {categories.map((category) => (
+          <Link key={category.slug} href={category.slug === "stories" || category.slug === "commercials" || category.slug === "personal" ? `/${category.slug}` : `/category/${category.slug}`} onClick={() => setOpen(false)} aria-current={pathname === `/${category.slug}` || pathname === `/category/${category.slug}` ? "page" : undefined}>
+            {category.name}
           </Link>
         ))}
+        <Link href="/about" onClick={() => setOpen(false)} aria-current={pathname === "/about" ? "page" : undefined}>About</Link>
       </nav>
     </header>
   );

@@ -11,7 +11,8 @@ export type Project = {
   id: string;
   slug: string;
   title: string;
-  category: "Stories" | "Commercials" | "Personal";
+  category: string;
+  categorySlug?: string;
   cover: MediaItem;
   media: MediaItem[];
   order: number;

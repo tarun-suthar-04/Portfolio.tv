@@ -41,3 +41,9 @@ Inspired by [twicetwice.tv](https://www.twicetwice.tv/) — a Paris/Oslo film st
 - [ ] Run `npm run build` and verify all routes
 - [ ] Deploy to Vercel or another Node.js host
 - [ ] Add `sitemap.ts` for search engine indexing
+
+## CMS status (2026-10-22)
+
+The repository includes the CMS and is connected locally to Supabase project `kegafxkikhxhgdfhdzwm`. Both versioned migrations are applied; the project has 3 starter categories, a private `portfolio-media` bucket, and no projects/media yet. The ignored `.env.local` contains only the project URL and publishable key. Production content cutover remains pending until the owner Auth account is allowlisted, legacy media is imported with a server-only secret key, and public deployment variables are configured. Original manifest backup: `migration/projects.ts.bak`. Dry-run report: `migration/import-report.json`.
+
+Required runtime: Next.js 16 Node.js server runtime; static export is incompatible with login, server actions and dynamic CMS reads. Configure `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, and optionally `NEXT_PUBLIC_CMS_MAX_UPLOAD_BYTES`.
