@@ -10,7 +10,86 @@ Portfolio of Tarun Suthar: creative AI, moving images, generative visuals, edito
 
 ## Local development
 
+<<<<<<< HEAD
 ```sh
+=======
+## What This Project Is About
+
+This portfolio showcases the creative practice of **Tarun Suthar**, an independent **Creative AI Artist & Visual Content Creator**. The site is structured to exhibit work across:
+
+- **AI Video & Moving Images:** Short-form video experiments, cinematic rhythm, and motion sequences.
+- **Generative Visuals & Portraits:** AI-assisted imagery, aesthetic portraiture, digital character studies, and wallpapers.
+- **Editorial & Poster Design:** High-contrast graphic typography, visual framing, and editorial concepts.
+- **Advertising & UGC Creatives:** Fashion-forward commercials, garment studies, silhouettes, and commercial content concepts.
+- **Visual Storytelling & Editing:** Image compositing, layering, color grading, and creative tool workflows (Flow AI, CapCut, Canva).
+
+---
+
+## Design & Architecture Highlights
+
+- **Dark Editorial Identity:** Engineered on a rich `#090909` canvas with off-white typography (`#f1f1ee`), restrained borders (`rgba(241, 241, 238, 0.2)`), and burnt-terracotta accent tones (`#b64934`).
+- **Fixed Vertical Navigation Rail:** Desktop edge rail with vertical writing mode (`writing-mode: vertical-rl`) providing persistent navigation without obstructing media immersion.
+- **Opposing Looping Media Wall:** Two independent, infinitely looping media tracks with grab-to-scroll interaction, touch support, and viewport-aware video playback.
+- **Full Viewport Editorial About Page:** Mathematically balanced two-column grid establishing hierarchy between identity, professional statement, creative disciplines, direct email inquiries, and live platform links.
+- **Dynamic Project Routes:** Next.js static site generation (`/projects/[slug]`) for individual project galleries, metadata inspection, and media viewers.
+- **Mobile Responsive:** Smooth breakpoint collapse to horizontal top header, overlay navigation drawer, and single-column swipeable media layouts.
+- **Zero-Dependency Core:** Clean vanilla CSS design system integrated with Tailwind CSS v4, achieving zero layout shift (CLS 0) and rapid loading.
+
+---
+[![Architecture diagram of tarun-suthar-04/portfolio.tv](https://gitdiagram.com/tarun-suthar-04/portfolio.tv/diagram.png)](https://gitdiagram.com/tarun-suthar-04/portfolio.tv?utm_source=readme&utm_medium=picture)
+
+## Project Structure
+
+```text
+├── public/
+│   └── media/                # Served portfolio media (images, posters, MP4 clips)
+├── src/
+│   ├── app/
+│   │   ├── about/            # Redesigned editorial About page
+│   │   ├── commercials/      # Commercials & advertising category archive
+│   │   ├── personal/         # Personal explorations archive
+│   │   ├── personal-work/    # Alias redirect to /personal
+│   │   ├── stories/          # Narrative & video stories archive
+│   │   ├── projects/[slug]/  # Dynamic project case study routes
+│   │   ├── globals.css       # Core design tokens, typography, rail & media-wall CSS
+│   │   ├── icon.tsx          # Dynamic SVG/PNG favicon generator
+│   │   ├── layout.tsx        # Root HTML shell, OpenGraph, and viewport config
+│   │   ├── not-found.tsx     # Custom editorial 404 page
+│   │   └── robots.ts         # Automated search engine crawler directives
+│   ├── components/
+│   │   ├── archive.tsx       # Category archive wrapper with media filtering
+│   │   ├── media-view.tsx    # Responsive picture & HTML5 video renderer
+│   │   ├── media-wall.tsx    # Dual-lane infinite looping media tracks
+│   │   └── site-header.tsx   # Responsive navigation rail & mobile menu
+│   └── data/
+│       ├── projects.ts       # Central projects catalog, aspect ratios & media paths
+│       └── site.ts           # Global identity: bio, email, status & platform links
+├── ARCHITECTURE.md           # Deep architectural specification
+├── CODING_RULES.md           # Engineering guidelines & accessibility standards
+├── INFO.md                   # Single source of truth for portfolio facts
+└── tsconfig.json             # Strict TypeScript configuration
+```
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- **Node.js 20.9+** or newer
+- **npm** (or pnpm / yarn)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/tarun-suthar-04/Portfolio.tv.git
+
+# Enter project directory
+cd Portfolio.tv
+
+# Install dependencies
+>>>>>>> 460e9756ae2e2d839025308515c49b62154b723c
 npm install
 cp .env.example .env.local
 npm run dev
