@@ -1,150 +1,318 @@
-# TARUN / VISUAL WORKS
+﻿<div align="center">
 
-Portfolio of Tarun Suthar: creative AI, moving images, generative visuals, editorial design and commercial work. The existing monochrome editorial site is backed by an optional Supabase CMS.
+# ◼ PORTFOLIO.TV
 
-## Stack
+### *The Creative Universe of Tarun Suthar*
 
-- Next.js 16 App Router, React 19, TypeScript strict mode, Tailwind CSS v4 and authored CSS.
-- Supabase Auth, PostgreSQL with RLS, and Storage for CMS media.
-- Node.js capable Next hosting is required. Static export cannot run admin auth, server actions or dynamic database queries.
-
-## Local development
-
-<<<<<<< HEAD
-```sh
-=======
-## What This Project Is About
-
-This portfolio showcases the creative practice of **Tarun Suthar**, an independent **Creative AI Artist & Visual Content Creator**. The site is structured to exhibit work across:
-
-- **AI Video & Moving Images:** Short-form video experiments, cinematic rhythm, and motion sequences.
-- **Generative Visuals & Portraits:** AI-assisted imagery, aesthetic portraiture, digital character studies, and wallpapers.
-- **Editorial & Poster Design:** High-contrast graphic typography, visual framing, and editorial concepts.
-- **Advertising & UGC Creatives:** Fashion-forward commercials, garment studies, silhouettes, and commercial content concepts.
-- **Visual Storytelling & Editing:** Image compositing, layering, color grading, and creative tool workflows (Flow AI, CapCut, Canva).
+**AI Video · Generative Visuals · Editorial Design · Commercial Work**
 
 ---
 
-## Design & Architecture Highlights
+[![Live Site](https://img.shields.io/badge/🌐_Live_Site-portfoliotv.vercel.app-000000?style=for-the-badge&logoColor=white)](https://portfoliotv.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Supabase](https://img.shields.io/badge/Supabase-CMS-3ECF8E?style=for-the-badge&logo=supabase&logoColor=black)](https://supabase.com)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com)
 
-- **Dark Editorial Identity:** Engineered on a rich `#090909` canvas with off-white typography (`#f1f1ee`), restrained borders (`rgba(241, 241, 238, 0.2)`), and burnt-terracotta accent tones (`#b64934`).
-- **Fixed Vertical Navigation Rail:** Desktop edge rail with vertical writing mode (`writing-mode: vertical-rl`) providing persistent navigation without obstructing media immersion.
-- **Opposing Looping Media Wall:** Two independent, infinitely looping media tracks with grab-to-scroll interaction, touch support, and viewport-aware video playback.
-- **Full Viewport Editorial About Page:** Mathematically balanced two-column grid establishing hierarchy between identity, professional statement, creative disciplines, direct email inquiries, and live platform links.
-- **Dynamic Project Routes:** Next.js static site generation (`/projects/[slug]`) for individual project galleries, metadata inspection, and media viewers.
-- **Mobile Responsive:** Smooth breakpoint collapse to horizontal top header, overlay navigation drawer, and single-column swipeable media layouts.
-- **Zero-Dependency Core:** Clean vanilla CSS design system integrated with Tailwind CSS v4, achieving zero layout shift (CLS 0) and rapid loading.
+</div>
 
 ---
-[![Architecture diagram of tarun-suthar-04/portfolio.tv](https://gitdiagram.com/tarun-suthar-04/portfolio.tv/diagram.png)](https://gitdiagram.com/tarun-suthar-04/portfolio.tv?utm_source=readme&utm_medium=picture)
 
-## Project Structure
+## ◈ What Is This?
 
-```text
-├── public/
-│   └── media/                # Served portfolio media (images, posters, MP4 clips)
-├── src/
-│   ├── app/
-│   │   ├── about/            # Redesigned editorial About page
-│   │   ├── commercials/      # Commercials & advertising category archive
-│   │   ├── personal/         # Personal explorations archive
-│   │   ├── personal-work/    # Alias redirect to /personal
-│   │   ├── stories/          # Narrative & video stories archive
-│   │   ├── projects/[slug]/  # Dynamic project case study routes
-│   │   ├── globals.css       # Core design tokens, typography, rail & media-wall CSS
-│   │   ├── icon.tsx          # Dynamic SVG/PNG favicon generator
-│   │   ├── layout.tsx        # Root HTML shell, OpenGraph, and viewport config
-│   │   ├── not-found.tsx     # Custom editorial 404 page
-│   │   └── robots.ts         # Automated search engine crawler directives
-│   ├── components/
-│   │   ├── archive.tsx       # Category archive wrapper with media filtering
-│   │   ├── media-view.tsx    # Responsive picture & HTML5 video renderer
-│   │   ├── media-wall.tsx    # Dual-lane infinite looping media tracks
-│   │   └── site-header.tsx   # Responsive navigation rail & mobile menu
-│   └── data/
-│       ├── projects.ts       # Central projects catalog, aspect ratios & media paths
-│       └── site.ts           # Global identity: bio, email, status & platform links
-├── ARCHITECTURE.md           # Deep architectural specification
-├── CODING_RULES.md           # Engineering guidelines & accessibility standards
-├── INFO.md                   # Single source of truth for portfolio facts
-└── tsconfig.json             # Strict TypeScript configuration
+**Portfolio.TV** is a fully custom-built, dark-editorial creative portfolio for **Tarun Suthar** — an independent AI Artist & Visual Content Creator. It is not a template. Every pixel, animation, and interaction was intentionally designed.
+
+The site doubles as a **headless CMS** — content is managed through a private admin panel backed by Supabase, and updates go live instantly without redeployment.
+
+---
+
+## ◈ Creative Disciplines
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                   │
+│   🎬  AI VIDEO & MOVING IMAGES                                   │
+│       Short-form cinematic experiments · Motion sequences         │
+│                                                                   │
+│   🖼  GENERATIVE VISUALS & PORTRAITS                             │
+│       AI-assisted imagery · Digital character studies             │
+│                                                                   │
+│   📐  EDITORIAL & POSTER DESIGN                                  │
+│       High-contrast typography · Visual framing concepts          │
+│                                                                   │
+│   📢  ADVERTISING & UGC CREATIVES                                │
+│       Fashion commercials · Garment studies · Silhouettes         │
+│                                                                   │
+│   🎞  VISUAL STORYTELLING & EDITING                              │
+│       Compositing · Color grading · Flow AI · CapCut              │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Quick Start
+## ◈ Tech Stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Framework** | Next.js 16 App Router | SSR, dynamic routes, server actions |
+| **UI** | React 19 + TypeScript 5.9 | Strict-typed component architecture |
+| **Styling** | Vanilla CSS + Tailwind v4 | Zero-CLS design system, `#090909` editorial palette |
+| **Database** | Supabase PostgreSQL + RLS | Projects, media, categories with row-level security |
+| **Auth** | Supabase Auth | Admin allowlist — no public signups |
+| **Storage** | Supabase Storage | Private bucket with signed URL delivery |
+| **Hosting** | Vercel (Node.js runtime) | Edge-ready, cookie + server action support |
+
+---
+
+## ◈ Design Identity
+
+```
+PALETTE ──────────────────────────────────────────────────────────
+
+  ██████  Background    #090909   Rich near-black canvas
+  ░░░░░░  Foreground    #f1f1ee   Off-white editorial type
+  ▒▒▒▒▒▒  Border        rgba(241,241,238,0.2)   Restrained separators
+  ●●●●●●  Accent        #b64934   Burnt terracotta highlights
+
+TYPOGRAPHY ───────────────────────────────────────────────────────
+
+  Headings   Condensed sans — all-caps editorial weight
+  Body       Light tracking — breathing room on dark canvas
+  Navigation Vertical writing-mode rail (desktop)
+```
+
+---
+
+## ◈ Architecture Overview
+
+```
+portfoliotv.vercel.app
+│
+├── / (Home)
+│   └── Dual-lane infinite looping media wall
+│       └── Grab-to-scroll · Touch support · Viewport-aware autoplay
+│
+├── /about
+│   └── Two-column editorial grid
+│       └── Identity · Statement · Disciplines · Links
+│
+├── /commercials  /personal  /stories  /category/[slug]
+│   └── Category archive pages with media filtering
+│
+├── /projects/[slug]
+│   └── Dynamic project case study with gallery viewer
+│
+└── /admin  (Private — requires Supabase Auth)
+    ├── /admin/login          Auth gate
+    ├── /admin/projects       CRUD project list
+    ├── /admin/projects/[id]/edit  Upload · Reorder · Publish
+    ├── /admin/categories     Create · Rename · Reorder
+    ├── /admin/media          Storage archive & usage
+    └── /admin/settings       Upload limits & config
+```
+
+---
+
+## ◈ Project Structure
+
+```
+Portfolio.tv/
+│
+├── src/
+│   ├── app/
+│   │   ├── about/                  Editorial About page
+│   │   ├── commercials/            Category archive
+│   │   ├── personal/               Personal explorations
+│   │   ├── stories/                Video stories archive
+│   │   ├── category/[slug]/        Dynamic category routes
+│   │   ├── projects/[slug]/        Project case study routes
+│   │   ├── admin/                  🔒 Protected CMS panel
+│   │   │   ├── login/              Auth gate
+│   │   │   ├── (protected)/        Admin layout with allowlist check
+│   │   │   │   ├── projects/       Project manager
+│   │   │   │   ├── media/          Media library
+│   │   │   │   ├── categories/     Category manager
+│   │   │   │   └── settings/       Config viewer
+│   │   │   ├── actions.ts          All server actions
+│   │   │   └── upload-media.tsx    Drag-drop uploader + canvas poster
+│   │   ├── globals.css             Design tokens & admin CSS system
+│   │   ├── layout.tsx              Root shell, OpenGraph, viewport
+│   │   └── robots.ts              Crawler directives
+│   │
+│   ├── components/
+│   │   ├── archive.tsx             Category archive wrapper
+│   │   ├── media-view.tsx          Responsive picture & video renderer
+│   │   ├── media-wall.tsx          Dual-lane infinite looping tracks
+│   │   └── site-header.tsx         Navigation rail & mobile menu
+│   │
+│   ├── lib/
+│   │   └── supabase/               SSR-safe Supabase client utilities
+│   │
+│   └── data/
+│       ├── projects.ts             Static project catalog (fallback)
+│       └── site.ts                 Identity: bio, email, platform links
+│
+├── supabase/
+│   └── migrations/                 PostgreSQL schema & RLS policies
+│
+├── scripts/
+│   ├── import-portfolio.mjs        One-time content migration script
+│   └── verify-supabase-connection.mjs  Smoke test
+│
+├── migration/
+│   ├── projects.ts.bak             Original manifest backup
+│   └── MIGRATION_REPORT.md
+│
+├── ARCHITECTURE.md                 Data flow & deep spec
+├── CODING_RULES.md                 Engineering guidelines
+└── FEATURE_LOG.md                  Changelog of CMS fixes
+```
+
+---
+
+## ◈ Quick Start
 
 ### Prerequisites
 
-- **Node.js 20.9+** or newer
-- **npm** (or pnpm / yarn)
+| Requirement | Version |
+|---|---|
+| Node.js | `20.9+` |
+| npm / pnpm / yarn | any |
+| Supabase project | optional (for CMS) |
 
 ### Installation
 
 ```bash
-# Clone the repository
+# 1. Clone
 git clone https://github.com/tarun-suthar-04/Portfolio.tv.git
-
-# Enter project directory
 cd Portfolio.tv
 
-# Install dependencies
->>>>>>> 460e9756ae2e2d839025308515c49b62154b723c
+# 2. Install dependencies
 npm install
+
+# 3. Configure environment
 cp .env.example .env.local
+# → Fill in NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+
+# 4. Start dev server
 npm run dev
 ```
 
-Without Supabase values, development previews the original `src/data/projects.ts` manifest. Once configured, the CMS database is the public content source. Production without CMS configuration intentionally serves no manifest projects.
+> **Without Supabase keys:** the site loads the static `src/data/projects.ts` manifest.
+> **With Supabase keys:** the live database becomes the content source and the admin panel is fully active.
 
-## Supabase setup
+---
 
-1. Create a Supabase project. In Authentication settings, disable public signups and create the owner account using the dashboard (Auth → Users → Add user). There is no registration page.
-2. The base schema and policy/index tuning migrations have already been applied to project `kegafxkikhxhgdfhdzwm`. For another environment, apply both SQL files in [`supabase/migrations/`](supabase/migrations/).
-3. Copy the administrator user's UUID from Auth → Users and execute `insert into public.admin_users(user_id) values ('USER-UUID');` in SQL Editor. This is the explicit administrator bootstrap; never expose it as a public endpoint.
-4. `.env.local` is connected to the existing project for local development. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` to the production host environment. Optionally set `NEXT_PUBLIC_CMS_MAX_UPLOAD_BYTES` (default 524288000). Never expose a Supabase secret key in an app runtime or a `NEXT_PUBLIC_` variable.
-5. Run `npm run dev`, sign in at `/admin/login`, and verify the dashboard. RLS limits drafts and mutations to the `admin_users` allowlist. The Storage bucket is private; published asset delivery uses signed redirects and RLS.
+## ◈ Supabase CMS Setup
 
-## Import the existing portfolio
+```
+Step 1  Create a Supabase project
+        → Disable public signups (Auth → Settings)
+        → Create admin user manually (Auth → Users → Add user)
 
-The original manifest is backed up at `migration/projects.ts.bak`; original files in `public/media/` and `work/` are retained. Run a local validation first:
+Step 2  Apply database migrations
+        → Already applied to project: kegafxkikhxhgdfhdzwm
+        → For a new environment: run SQL files in supabase/migrations/
 
-```sh
+Step 3  Bootstrap the admin allowlist
+        → Copy the user UUID from Auth → Users
+        → Run: INSERT INTO public.admin_users(user_id) VALUES ('YOUR-UUID');
+
+Step 4  Set environment variables
+        NEXT_PUBLIC_SUPABASE_URL              = your project URL
+        NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY  = anon/public key
+        NEXT_PUBLIC_CMS_MAX_UPLOAD_BYTES      = 524288000  (default 500 MB)
+
+Step 5  Verify
+        node scripts/verify-supabase-connection.mjs
+        → Open /admin/login and sign in
+```
+
+> ⚠️ **Never** expose your Supabase secret key in a `NEXT_PUBLIC_` variable or in any client-side runtime.
+
+---
+
+## ◈ Admin Panel
+
+| Route | Function |
+|---|---|
+| `/admin` | Dashboard — DB counts, recent projects |
+| `/admin/projects` | Create · Edit · Publish · Feature · Delete |
+| `/admin/projects/[id]/edit` | Upload media · Reorder gallery · Set cover |
+| `/admin/categories` | Create · Rename · Reorder · Delete (if empty) |
+| `/admin/media` | Storage archive · Usage per project |
+| `/admin/settings` | Upload limits & ordering config |
+
+**Supported Upload Formats**
+
+| Type | Formats |
+|---|---|
+| Image | JPEG · PNG · WebP · AVIF |
+| Video | MP4 · WebM |
+| Max size | 500 MB per file (bucket policy) |
+
+---
+
+## ◈ Import Existing Portfolio
+
+```bash
+# Dry run (safe — no writes)
 node scripts/import-portfolio.mjs --dry-run
+
+# Live import (requires secret key in local shell only)
+SUPABASE_URL=... SUPABASE_SECRET_KEY=... node scripts/import-portfolio.mjs
 ```
 
-The schema is applied, but the initial content import still needs a server-only Supabase secret key. Set `SUPABASE_URL` and `SUPABASE_SECRET_KEY` only in the local shell used for import, then run:
+The importer **upserts** by slug and Storage path — safe to re-run. Review `migration/import-report.json` after.
 
-```sh
-node scripts/import-portfolio.mjs
+---
+
+## ◈ Deploy to Vercel
+
+```bash
+# Requirements
+✔  Node.js runtime (not static export)
+✔  Cookie support
+✔  Server actions enabled
+
+# Environment variables to add in Vercel dashboard
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
 ```
 
-The import is repeatable: it upserts categories and projects by slug and media by stable Storage path. It uploads source assets to `portfolio-media`, sets media metadata and cover references, and records a JSON report. Review `migration/MIGRATION_REPORT.md` and the generated `migration/import-report.json`. The import has not been run against a live database in this workspace.
+Content updates (publish, upload, edit) go live **instantly** — no redeploy needed.
 
-## Admin workflow
+---
 
-- `/admin`: database counts and recently updated projects.
-- `/admin/projects`: create, edit, preview, publish/unpublish, feature and remove work.
-- `/admin/projects/[id]/edit`: update content, upload multiple image/video files directly to Storage, reorder gallery items, select a cover and remove media.
-- `/admin/categories`: create, rename, reorder, and delete empty categories. Existing categories with projects must be reassigned first.
-- `/admin/media`: view recently uploaded media and project usage.
-- `/admin/settings`: displays current upload behavior and ordering.
+## ◈ Validation
 
-Image formats: JPEG, PNG, WebP and AVIF. Video: MP4 and WebM. Uploads go directly from the browser to Storage, up to the configured per-file limit (capped at 500 MB by the bucket policy). The public site uses published project rows only and does not require redeploys for content updates. The original fixed archive routes stay active; additional category archives use `/category/[slug]`.
-
-## Deploy
-
-Deploy the existing Next.js application to its existing host only if it supports a Node.js runtime, cookies, and server actions (for example, Vercel). Do not enable static export. Add the two public Supabase environment variables to the host and redeploy once to activate CMS code. Run SQL migration and the content import before switching traffic; keep a database backup and preserve local media. Routine content changes afterward do not require deployment. Published Supabase Storage assets are delivered through signed redirects from the private bucket.
-
-## Validation commands
-
-```sh
-node scripts/verify-supabase-connection.mjs
-npm run typecheck
-npm run lint
-npm run build
+```bash
+node scripts/verify-supabase-connection.mjs   # Supabase smoke test
+npm run typecheck                              # TypeScript strict check
+npm run lint                                  # ESLint
+npm run build                                 # Production build
 ```
 
-The Supabase smoke check uses the publishable key and confirms the starter categories, published-content visibility, and anonymous denial on the admin allowlist.
+---
 
-See `ARCHITECTURE.md` for data flow, `PROJECT_CONTEXT.md` for current repository state and `supabase/migrations/` for schema/security policies.
+## ◈ Key Documents
+
+| File | Purpose |
+|---|---|
+| [`ARCHITECTURE.md`](./ARCHITECTURE.md) | Full data flow, component map, SSR strategy |
+| [`CODING_RULES.md`](./CODING_RULES.md) | Engineering standards & accessibility rules |
+| [`FEATURE_LOG.md`](./FEATURE_LOG.md) | CMS changelog & fixed issues |
+| [`supabase/migrations/`](./supabase/migrations/) | PostgreSQL schema & RLS security policies |
+
+---
+
+<div align="center">
+
+**Built by [Tarun Suthar](mailto:tarunsuthar99833229782@gmail.com)**
+*Creative AI · Visual Content · Editorial Design*
+
+[![Email](https://img.shields.io/badge/Email-000000?style=flat-square&logo=gmail&logoColor=white)](mailto:tarunsuthar99833229782@gmail.com)
+
+</div>
