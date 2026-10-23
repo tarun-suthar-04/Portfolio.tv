@@ -60,6 +60,8 @@ async function uploadToStorage(
     xhr.open("POST", url);
     xhr.setRequestHeader("Authorization", `Bearer ${token}`);
     xhr.setRequestHeader("apikey", key);
+    xhr.setRequestHeader("Content-Type", file.type || "application/octet-stream");
+    xhr.setRequestHeader("cache-control", "max-age=3600");
     xhr.setRequestHeader("x-upsert", "false");
 
     if (onProgress && xhr.upload) {
@@ -84,10 +86,7 @@ async function uploadToStorage(
       }
     };
 
-    const formData = new FormData();
-    formData.append("", file);
-    formData.append("cacheControl", "3600");
-    xhr.send(formData);
+    xhr.send(file);
   });
 }
 
@@ -340,7 +339,7 @@ export default function UploadMedia({ projectId }: { projectId: string }) {
           prev.map((q) => (q.id === item.id ? { ...q, status: "attaching" } : q))
         );
 
-        await attachMedia({
+        const attachRes = await attachMedia({
           projectId,
           media_type: item.isVideo ? "video" : "image",
           storage_path: storagePath,
@@ -351,6 +350,10 @@ export default function UploadMedia({ projectId }: { projectId: string }) {
           mime_type: item.file.type,
           file_size: item.file.size,
         });
+
+        if (!attachRes.success) {
+          throw new Error(attachRes.error || "Failed to attach media to project");
+        }
 
         setQueue((prev) =>
           prev.map((q) => (q.id === item.id ? { ...q, status: "success", progress: 100 } : q))
