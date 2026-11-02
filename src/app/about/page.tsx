@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { site } from "@/data/site";
 import { PortraitRotation } from "./portrait-rotation";
 
@@ -117,10 +116,6 @@ export default function AboutPage() {
           </div>
         )}
       </section>
-
-      <figure className="about-landscape" aria-label="Monochrome contour landscape">
-        <Image src="/images/about-contour-landscape.svg" alt="" width={1600} height={460} loading="lazy" decoding="async" />
-      </figure>
 
       <footer className="about-footer-row">
         <span>{site.name}</span>
