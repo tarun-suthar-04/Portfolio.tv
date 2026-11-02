@@ -12,7 +12,7 @@ export function SiteHeader({categories=[]}:{categories?:NavCategory[]}) {
   if(pathname.startsWith("/admin")) return null;
 
   return (
-    <header className="site-header">
+    <header className={`site-header${pathname === "/about" ? " is-about" : ""}`}>
       <Link className="wordmark" href="/" aria-label={`${site.name} home`} onClick={() => setOpen(false)}>
         {site.name}
       </Link>
