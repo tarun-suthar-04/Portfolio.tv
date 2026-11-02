@@ -85,6 +85,18 @@ TYPOGRAPHY ───────────────────────
 
 ---
 
+## ◈ About Portrait Rotation
+
+The About page uses a self-contained animated SVG built from the original four portrait views. It switches cleanly through **front → left profile → back → right profile** at 0.3 seconds per view (a 1.2-second loop), with no cross-fades. Visitors who prefer reduced motion see the still front view.
+
+<p align="center">
+  <img src="./public/images/about-head-rotation.svg" width="220" alt="Animated four-view geometric portrait used on the About page" />
+</p>
+
+Source: [`public/images/about-head-rotation.svg`](./public/images/about-head-rotation.svg), rendered by [`PortraitRotation`](./src/app/about/portrait-rotation.tsx).
+
+---
+
 ## ◈ Architecture Overview
 
 ```
